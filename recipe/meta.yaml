@@ -24,9 +24,9 @@ requirements:
   run:
     - jinja2
     - mkdocs >=1.0
-    - packaging
     - python >=3.5
-    - ruamel.yaml
+    - pyaml
+    - verspec
 
 test:
   imports:
