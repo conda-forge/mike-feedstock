@@ -28,6 +28,8 @@ requirements:
     - pyparsing >=3.0
     - pyaml >=5.1
     - verspec
+    - importlib-resources
+    - importlib-metadata
 
 test:
   imports:
