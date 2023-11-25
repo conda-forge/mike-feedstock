@@ -22,10 +22,11 @@ requirements:
     - pip
     - python >=3.6
   run:
-    - jinja2
-    - mkdocs >=1.0
     - python >=3.6
-    - pyaml
+    - jinja2 >=2.7
+    - mkdocs >=1.0
+    - pyparsing >=3.0
+    - pyaml >=5.1
     - verspec
 
 test:
