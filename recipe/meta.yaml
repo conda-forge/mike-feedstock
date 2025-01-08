@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mike-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mike-{{ version }}.tar.gz
   sha256: d59cc8054c50f9c8a046cfd47f9b700cf9ff1b2b19f420bd8812ca6f94fa8bd3
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - mike = mike.driver:main
@@ -20,9 +20,10 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
+    - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - jinja2 >=2.7
     - mkdocs >=1.0
     - pyparsing >=3.0
@@ -40,6 +41,7 @@ test:
     - mike --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/jimporter/mike
