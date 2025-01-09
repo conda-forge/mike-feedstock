@@ -1,0 +1,59 @@
+context:
+  name: mike
+  version: 2.1.2
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/mike-${{ version }}.tar.gz
+  sha256: d59cc8054c50f9c8a046cfd47f9b700cf9ff1b2b19f420bd8812ca6f94fa8bd3
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+  python:
+    entry_points:
+      - mike = mike.driver:main
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - jinja2 >=2.7
+    - mkdocs >=1.0
+    - pyparsing >=3.0
+    - pyaml >=5.1
+    - verspec
+    - importlib-resources
+    - importlib-metadata
+
+tests:
+  - python:
+      imports:
+        - mike
+        - mike.templates
+      python_version: ${{ python_min }}.*
+  - requirements:
+      run:
+        - pip
+        - python ${{ python_min }}.*
+    script:
+      - pip check
+      - mike --help
+
+about:
+  summary: Manage multiple versions of your MkDocs-powered documentation
+  license: BSD-3-Clause
+  # License file manually packaged. See https://github.com/jimporter/mike/pull/23
+  license_file: LICENSE
+  homepage: https://github.com/jimporter/mike
+
+extra:
+  recipe-maintainers:
+    - hadim
