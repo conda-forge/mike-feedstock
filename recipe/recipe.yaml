@@ -30,7 +30,7 @@ requirements:
     - pyparsing >=3.0
     - pyaml >=5.1
     - verspec
-    - pyyaml_env_tag
+    - pyyaml-env-tag
     - importlib-resources
     - importlib-metadata
 
